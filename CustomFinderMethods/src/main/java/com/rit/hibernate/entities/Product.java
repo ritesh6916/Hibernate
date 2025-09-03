@@ -14,7 +14,11 @@ import jakarta.persistence.Table;
 public class Product {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
 	private Long productId;
+
+	@SequenceGenerator(name = "product_seq", initialValue = 1000, // starting value (4 digits)
+			allocationSize = 1)
 
 	private String name;
 	private String description;
